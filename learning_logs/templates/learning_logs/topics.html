@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "learning_logs/base.html" %}
+    <meta charset="UTF-8">
+    {% block page_header %}
+     <h1>Topics</h1>
+    {% endblock page_header %}
+</head>
+<body>
+
+    {% block content %}
+    <a class="btn btn-md btn-primary" href="{% url 'learning_logs:new_topic' %}"
+        role="button">Add a new topic</a>
+    <br/><br/><br/><br/>
+
+    <ul>
+      {% for topic in topics %}
+        <li><h3>
+            <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+        </h3></li>
+      {% empty %}
+        <li><h3>No topics have been added yet.</h3></li>
+      {% endfor %}
+    </ul>
+
+    {% endblock content %}
+</body>
+</html>
